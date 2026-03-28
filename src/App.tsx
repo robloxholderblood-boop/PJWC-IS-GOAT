@@ -19,6 +19,9 @@ import {
 } from 'lucide-react';
 import { MemoryGame } from './components/MemoryGame';
 import { SnakeGame } from './components/SnakeGame';
+import { GameViewer } from './components/GameViewer';
+import { AIChatGame } from './components/AIChatGame';
+import { ProxyViewer } from './components/ProxyViewer';
 
 interface Game {
   id: string;
@@ -47,7 +50,7 @@ const GAMES: Game[] = [
     image: 'https://i.postimg.cc/nXn9m0xc/1v1.png',
     rating: 4.7,
     plays: '1.2M',
-    embedUrl: 'https://classroom4x.dev/1v1/'
+    embedUrl: 'https://classroom4x.dev/1v1/index.html'
   },
   {
     id: 'dadish',
@@ -65,6 +68,121 @@ const GAMES: Game[] = [
     image: 'https://i.postimg.cc/VSC3qBms/snake.png',
     rating: 4.8,
     plays: '2.1M',
+  },
+  {
+    id: 'bitlife',
+    title: 'BitLife',
+    category: 'Strategy',
+    image: 'https://i.postimg.cc/CBbYgzhr/bitlife.png',
+    rating: 4.8,
+    plays: '1.5M',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/bitlife/index.html'
+  },
+  {
+    id: 'bart-blast',
+    title: 'Bart Blast',
+    category: 'Action',
+    image: 'https://i.postimg.cc/mhwkz54g/bart-blast.png',
+    rating: 4.6,
+    plays: '300K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/bart-blast/index.html'
+  },
+  {
+    id: 'baldi-plus',
+    title: "Baldi's Basics Plus",
+    category: 'Horror',
+    image: 'https://i.postimg.cc/QVXx3J78/baldi.png',
+    rating: 4.7,
+    plays: '125K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/genizy/web-port@latest/baldi-plus/index.html'
+  },
+  {
+    id: 'fnae',
+    title: "Five Nights at BIG E",
+    category: 'Horror',
+    image: 'https://i.postimg.cc/grNckLyg/fnaf.png',
+    rating: 4.5,
+    plays: '88K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/web-ports/fnae@c9c8b513a27155bf37c4ab3dee74e99b12b895ba/index.html'
+  },
+  {
+    id: 'cheese-rolling',
+    title: 'CheeseRolling',
+    category: 'Arcade',
+    image: 'https://i.postimg.cc/zVQJTmcf/cheese.png',
+    rating: 4.6,
+    plays: '42K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/SomeRandomFella/portsandrips@master/CheeseRollingWeb/index.html'
+  },
+  {
+    id: 'fnalb',
+    title: 'Five Nights at Last Breath',
+    category: 'Horror',
+    image: 'https://i.postimg.cc/grNckLyg/fnaf.png',
+    rating: 4.8,
+    plays: '215K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/last-breath-epstein/index.html'
+  },
+  {
+    id: 'tattletail',
+    title: 'Tattletail',
+    category: 'Horror',
+    image: 'https://i.postimg.cc/dhTJBWbN/tattletail.png',
+    rating: 4.7,
+    plays: '150K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/genizy/web-port@latest/tattletail/index.html'
+  },
+  {
+    id: 'yandere',
+    title: 'Yandere Simulator',
+    category: 'Horror',
+    image: 'https://i.postimg.cc/v1rbR4H2/yandere.png',
+    rating: 4.6,
+    plays: '280K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/genizy/web-port@master/yandere-simulator/index.html'
+  },
+  {
+    id: 'minecraft',
+    title: 'Minecraft Web',
+    category: 'Arcade',
+    image: 'https://i.postimg.cc/WFSV3xZM/minecraft.png',
+    rating: 4.9,
+    plays: '3.5M',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/genizy/mc@main/data/1.21.4/index.html'
+  },
+  {
+    id: 'flappy-mp',
+    title: 'Flappy Bird MP',
+    category: 'Arcade',
+    image: 'https://i.postimg.cc/SjNq5N0K/flappy.png',
+    rating: 4.5,
+    plays: '120K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/gn-math/assets@main/129/index.html'
+  },
+  {
+    id: 'bowmasters',
+    title: 'Bowmasters',
+    category: 'Action',
+    image: 'https://i.postimg.cc/6TjwNJtw/bowmasters.png',
+    rating: 4.7,
+    plays: '450K',
+    embedUrl: 'https://cdn.jsdelivr.net/gh/bubbls/youtube-playables@main/bowmasters/index.html'
+  },
+  {
+    id: 'ai-friend',
+    title: 'AI Friend',
+    category: 'AI',
+    image: 'https://i.postimg.cc/jLBbLHD6/ai-friend.png',
+    rating: 5.0,
+    plays: 'New',
+  },
+  {
+    id: 'proxy',
+    title: 'Web Proxy',
+    category: 'Proxy',
+    image: 'https://i.postimg.cc/k6m0M68N/emoji-match.png',
+    rating: 4.9,
+    plays: 'Unlimited',
   }
 ];
 
@@ -73,7 +191,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeGame, setActiveGame] = useState<string | null>(null);
 
-  const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Strategy'];
+  const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Strategy', 'Horror', 'AI', 'Proxy'];
 
   const filteredGames = GAMES.filter(game => {
     const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -84,27 +202,21 @@ export default function App() {
   const renderActiveGame = () => {
     const game = GAMES.find(g => g.id === activeGame);
     
+    if (activeGame === 'proxy') {
+      return <ProxyViewer onExit={() => setActiveGame(null)} />;
+    }
+
+    if (activeGame === 'ai-friend') {
+      return <AIChatGame onExit={() => setActiveGame(null)} />;
+    }
+
     if (game?.embedUrl) {
       return (
-        <div className="w-full h-full bg-black flex flex-col">
-          <iframe 
-            id="innerFrame"
-            name="innerFrame"
-            src={game.embedUrl} 
-            className="flex-1 w-full border-none"
-            allowFullScreen
-            title={game.title}
-            sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation"
-            style={{ overflow: 'auto' }}
-          />
-          <div className="p-4 bg-zinc-900 flex justify-between items-center text-xs text-zinc-500">
-            <span>Powered by Classroom4x</span>
-            <div className="flex gap-4">
-              <button onClick={() => window.open(game.embedUrl, '_blank')} className="hover:text-white transition-colors">Open in New Tab</button>
-              <button onClick={() => document.querySelector('iframe')?.requestFullscreen()} className="hover:text-white transition-colors">Fullscreen</button>
-            </div>
-          </div>
-        </div>
+        <GameViewer 
+          title={game.title} 
+          embedUrl={game.embedUrl} 
+          onExit={() => setActiveGame(null)} 
+        />
       );
     }
 
@@ -138,12 +250,12 @@ export default function App() {
             <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <Gamepad2 className="text-white" size={24} />
             </div>
-            <span className="text-xl font-bold tracking-tight">NEXUS<span className="text-indigo-500">GAMES</span></span>
+            <span className="text-xl font-bold tracking-tight">CAT<span className="text-indigo-500">SWEATER</span></span>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-            <a href="#" className="hover:text-white transition-colors">Home</a>
-            <a href="#" className="hover:text-white transition-colors">Trending</a>
+            <button onClick={() => setActiveGame(null)} className="hover:text-white transition-colors">Home</button>
+            <button onClick={() => setActiveGame('proxy')} className="hover:text-white transition-colors">Web Proxy</button>
             <a href="#" className="hover:text-white transition-colors">New</a>
             <a href="#" className="hover:text-white transition-colors">Categories</a>
           </div>
@@ -167,7 +279,7 @@ export default function App() {
           <section className="mb-12">
             <div className="relative h-[300px] md:h-[400px] rounded-3xl overflow-hidden group">
               <img 
-                src="https://i.postimg.cc/nXn9m0xc/1v1.png" 
+                src="https://i.postimg.cc/VSC3qBms/snake.png" 
                 alt="Featured" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -175,16 +287,16 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 p-8 md:p-12">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="px-3 py-1 bg-indigo-600 text-[10px] font-bold uppercase tracking-widest rounded-full">Featured</span>
+                  <span className="px-3 py-1 bg-indigo-600 text-[10px] font-bold uppercase tracking-widest rounded-full">New Release</span>
                   <div className="flex items-center gap-1 text-yellow-400">
                     <Star size={14} fill="currentColor" />
-                    <span className="text-xs font-bold">4.9</span>
+                    <span className="text-xs font-bold">4.8</span>
                   </div>
                 </div>
-                <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase">1V1.LOL</h1>
-                <p className="text-zinc-300 max-w-lg mb-6 line-clamp-2">Build, edit, and shoot in this intense competitive battle royale. Can you be the last one standing?</p>
+                <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase">SNAKE CLASSIC</h1>
+                <p className="text-zinc-300 max-w-lg mb-6 line-clamp-2">The ultimate arcade classic. Eat the apples, grow your tail, and avoid the walls. How long can you survive?</p>
                 <button 
-                  onClick={() => setActiveGame('1v1')}
+                  onClick={() => setActiveGame('snake')}
                   className="px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2 hover:bg-indigo-500 hover:text-white transition-all transform active:scale-95"
                 >
                   <Play size={20} fill="currentColor" />
@@ -315,10 +427,10 @@ export default function App() {
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <Gamepad2 className="text-white" size={18} />
               </div>
-              <span className="text-lg font-bold tracking-tight">NEXUS<span className="text-indigo-500">GAMES</span></span>
+              <span className="text-lg font-bold tracking-tight">CAT<span className="text-indigo-500">SWEATER</span></span>
             </div>
             <p className="text-zinc-500 max-w-sm leading-relaxed">
-              The ultimate destination for unblocked web games. Play the best arcade, action, and puzzle games directly in your browser.
+              The ultimate destination for web games. Play the best arcade, action, and puzzle games directly in your browser.
             </p>
           </div>
           
@@ -348,7 +460,7 @@ export default function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-zinc-900 text-center text-zinc-600 text-xs">
-          © 2026 Nexus Games. All rights reserved. Built with passion for gamers.
+          © 2026 Catsweater Games. All rights reserved. Built with passion for gamers.
         </div>
       </footer>
     </div>
